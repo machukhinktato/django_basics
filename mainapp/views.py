@@ -31,7 +31,3 @@ def contact(request):
         'title': 'Контакты',
     }
     return render(request, 'mainapp/contact.html', context=content)
-
-
-def content(request):
-    return render(request, 'mainapp/index.html', content)
