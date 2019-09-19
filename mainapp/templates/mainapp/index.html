@@ -1,6 +1,8 @@
 {% extends 'mainapp/base.html' %}
 {% load staticfiles %}
 {% block menu %}
+
+
 <div class="slider">
 	<div class="header clearfix">
 		<a href="{% static 'index.html' %}" class="logo"></a>
@@ -31,15 +33,18 @@
 	<div class="clearfix">
 	</div>
 	<div class="tab-content">
+        {% for product in products %}
 		<div class="block">
-			<a href="#"><img src="{% static 'img/product-1.jpg' %}" alt="">
+			<a href="#"><img src="/media/{{ product.image }}" >
 				<div class="text">
 					<img src="{% static 'img/icon-hover.png' %}" alt="img">
-					<h4>Отличный стул</h4>
-					<p>Расположитесь комфортно. </p>
+                    <h3>{{ product.category.name }}</h3>
+					<h4>{{ product.name }}</h4>
+					<p>{{ product.description }}</p>
 				</div>
 			</a>
 		</div>
+        {% endfor %}
 		<div class="block">
 			<a href="#"><img src="{% static 'img/product-2.jpg' %}" alt="">
 				<div class="text">
@@ -54,5 +59,4 @@
 
 <div class="clr"></div>
 {% endblock %}
-
 
