@@ -1,29 +1,27 @@
 from django.shortcuts import render
-
-# Create your views here.
+import datetime
+from .models import ProductCategory, Product
 
 
 def main(request):
-    content = {
-        'title': 'Главная',
-    }
-    return render(request, 'mainapp/index.html', context=content)
+    title = 'главная'
+
+    products = Product.objects.all()
+
+    content = {'title': title, 'products': products}
+    return render(request, 'mainapp/index.html', content)
 
 
-def products(request):
-    links_menu = [
-        {'href': 'products', 'name': 'все'},
-        {'href': 'products_home', 'name': 'дом'},
-        {'href': 'products_office', 'name': 'офис'},
-        {'href': 'products_modern', 'name': 'модерн'},
-        {'href': 'products_classic', 'name': 'классика'},
-    ]
-    content = {
-        'title': 'Продукты',
-        'links_menu': links_menu,
-        'same_products': 'same_products'
-    }
-    return render(request, 'mainapp/products.html', context=content)
+def products(request, pk=None):
+    print(pk)
+    products = Product.objects.filter(category_id=pk).all()
+    print(products)
+    title = 'продукты'
+    links_menu = ProductCategory.objects.all()
+    same_products = Product.objects.all()
+
+    content = {'title': title, 'links_menu': links_menu, 'same_products': same_products}
+    return render(request, 'mainapp/products.html', content)
 
 
 def contact(request):
