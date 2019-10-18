@@ -26,12 +26,7 @@ import mainapp.views as mainapp
 urlpatterns = [
     path('', mainapp.main, name='main'),
     path('products/', include('mainapp.urls', namespace='products')),
-    # path('products/home/', mainapp.products, name='products_home'),
     path('auth/', include('authapp.urls', namespace='auth')),
-    # path('products/office/', mainapp.products, name='products_office'),
-    # path('products/modern/', mainapp.products, name='products_modern'),
-    # path('products/classic/', mainapp.products, name='products_classic'),
-    # path('products/', mainapp.products, name='products'),
     path('contact/', mainapp.contact, name='contact'),
     path('admin/', admin.site.urls),
 ]
