@@ -21,7 +21,6 @@ def products(request, pk=None):
     links_menu = ProductCategory.objects.all()
     basket = get_basket(request.user)
 
-    basket = get_basket(request.user)
     if request.user.is_authenticated:
 
         basket = Basket.objects.filter(user=request.user)
