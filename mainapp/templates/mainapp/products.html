@@ -1,5 +1,6 @@
 {% extends 'mainapp/base.html' %}
 {% load staticfiles %}
+{% load my_tags %}
 
 {% block content %}
     <div class="details">
@@ -10,7 +11,7 @@
         <div class="details-products">
             <div class="details-slider">
                 <div class="slider-product">
-                    <img src="/media/{{ hot_product.image }}" alt="">
+                    <img src="{{ hot_product.image|media_folder_products }}" alt="">
                 </div>
                 <div class="slider-control">
                     <div class="block">
