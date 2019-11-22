@@ -1,5 +1,7 @@
-from adminapp.views import user_delete, user_update, product_update, user_create, \
+from adminapp.views import (
+    user_delete, user_update, product_update, user_create,
     product_create, products, categories, product_delete
+)
 from django.urls import path
 import adminapp.views as adminapp
 
