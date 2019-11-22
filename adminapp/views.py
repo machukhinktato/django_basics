@@ -142,7 +142,9 @@ def products(request, pk):
     title = 'админка/продукт'
 
     category = get_object_or_404(ProductCategory, pk=pk)
-    products_list = Product.objects.filter(category__pk=pk).order_by('name')
+    products_list = Product.objects.filter(
+        category__pk=pk
+    ).order_by('name')
 
     content = {
         'title': title,
@@ -187,12 +189,16 @@ def product_update(request, pk):
     edit_product = get_object_or_404(Product, pk=pk)
 
     if request.method == 'POST':
-        edit_form = ProductEditForm(request.POST, request.FILES,\
-                                    instance=edit_product)
+        edit_form = ProductEditForm(
+            request.POST, request.FILES,
+                                    instance=edit_product
+                                    )
         if edit_form.is_valid():
             edit_form.save()
-            return  HttpResponseRedirect(reverse('admin:product_update',\
-                                                 args=[edit_product.pk]))
+            return HttpResponseRedirect(
+                reverse('admin:product_update',
+                                                 args=[edit_product.pk])
+                                         )
     else:
         edit_form = ProductEditForm(instance=edit_product)
 
