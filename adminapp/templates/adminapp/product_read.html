@@ -1,6 +1,6 @@
 {% extends 'adminapp/base.html' %}
 {% load staticfiles %}
-
+{% load my_tags %}
 
 {% block content %}
     <div class="product_read">
@@ -10,7 +10,7 @@
             {{ object.name|title }}
         </strong>
         </div>
-        <img src="/media/{{ object.image|default:'products_images/default.jpg' }}"
+        <img src="/media/{{ object.image|media_folder_products }}"
              alt="{{ object.name }}">
         <div class="summary">
             <b>цена</b>
